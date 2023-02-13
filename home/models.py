@@ -62,7 +62,7 @@ class Product(models.Model):
     category = models.ForeignKey(Category,on_delete=models.CASCADE)
     subcategory = models.ForeignKey(SubCategory,on_delete=models.CASCADE)
     brand = models.ForeignKey(Brand,on_delete=models.CASCADE)
-    slug = models.CharField(max_length=300)
+    slug = models.CharField(max_length=300,unique=True)
     status = models.CharField(max_length=50, choices=STATUS)
     labels = models.CharField(max_length=50, choices=LABELS)
 
@@ -79,5 +79,25 @@ class Review(models.Model):
 
     def __str__(self):
         return self.name
+
+class ProductImage(models.Model):
+    name = models.CharField(max_length=300)
+    image = models.ImageField(upload_to='media')
+    product = models.ForeignKey(Product,on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.name
+
+class ProductReview(models.Model):
+    name = models.CharField(max_length=200)
+    email = models.EmailField(max_length=300)
+    date = models.DateField(auto_now_add=True)
+    star = models.IntegerField()
+    comment = models.TextField()
+    slug = models.CharField(max_length=500)
+
+    def __str__(self):
+        return self.name
+
 
 

@@ -9,6 +9,8 @@ admin.site.register(Ad)
 admin.site.register(Brand)
 admin.site.register(Product)
 admin.site.register(Review)
+admin.site.register(ProductImage)
+admin.site.register(ProductReview)
 
 
 

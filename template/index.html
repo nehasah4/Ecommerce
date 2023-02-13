@@ -63,8 +63,8 @@
         <div class="brand">
             <div class="container-fluid">
                 <div class="brand-slider">
-                    {% for brand in brands %}
-                    <div class="brand-item"><img src="{{brand.image.url}}" alt=""></div>
+                    {% for bran in brands %}
+                    <div class="brand-item"><a href = "/brand/{{bran.slug}}"><img src="{{bran.image.url}}" alt=""></adiv>
                     {% endfor %}
 
                 </div>
@@ -147,7 +147,7 @@
                         {% endif %}
                         {% endfor %}
                         {% for ad in ads %}
-                        {% elif ad.rank == 5 %}
+                        {% if ad.rank == 5 %}
                         <div class="category-item ch-150">
                             <img src="{{ad.image.url}}" />
                             <a class="category-name" href="">
